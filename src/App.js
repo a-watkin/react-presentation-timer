@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Time from './time/Time';
@@ -62,7 +61,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.startCountdown();
     this.setState({
       remainingTime: this.state.countdownTime
     })
@@ -142,21 +140,26 @@ class App extends Component {
         <TimeInput
           startingTime={Math.floor(this.state.countdownTime / 2)}
           changeTime={(e) => this.handleFirstWarnings(e)}
-          showWarningInput={true}
+          showWarningInput={false}
         >
         </TimeInput>
         <TimeInput
           startingTime={Math.floor(this.state.countdownTime / 4)}
           changeTime={(e) => this.handleSecondWarnings(e)}
-          showWarningInput={true}
+          showWarningInput={false}
         >
         </TimeInput>
 
         <span>
-          {this.state.timeFlowing ? <Button handleClick={() => this.handlePause()} name={"Pause"}></Button> : <Button handleClick={() => this.handleStart()} name={"Start"}></Button>}
+          {this.state.timeFlowing ?
+            <Button handleClick={() => this.handlePause()} name={"Pause"}></Button> :
+            <Button handleClick={() => this.handleStart()} name={"Start"}></Button>}
 
           <Button handleClick={() => this.hanldeResetTime()} name={"Reset"}></Button>
         </span>
+
+
+        <button onClick={() => this.playAudio()}> play</button>
 
       </div>
     )
