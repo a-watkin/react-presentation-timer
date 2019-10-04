@@ -158,9 +158,6 @@ class App extends Component {
           <Button handleClick={() => this.hanldeResetTime()} name={"Reset"}></Button>
         </span>
 
-
-        <button onClick={() => this.playAudio()}> play</button>
-
       </div>
     )
   }
