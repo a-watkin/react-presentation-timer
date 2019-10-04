@@ -1,7 +1,9 @@
 import React from 'react'
 import { secondsToMinutesMessage } from '../formatTime';
 
+
 const warning = (props) => {
+
   let { time, firstWarning, secondWarning, startingTime } = props;
 
   let message = 'Plenty of time, you got this.'
@@ -22,7 +24,6 @@ const warning = (props) => {
     message = `Some of your warnings are invalid!`;
   }
 
-
   return (
     <div>
       <h2>{message}</h2>
@@ -30,5 +31,5 @@ const warning = (props) => {
   )
 
 }
- 
+
 export default warning;

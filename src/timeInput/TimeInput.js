@@ -19,7 +19,13 @@ const timeInput = (props) => {
     <div className="time-input">
       <h3>{text}</h3>
       <span>
-        <input max={props.startingTime} min={0} type='number' onChange={props.changeTime} defaultValue={secondsToMinutes(props.startingTime)}></input>
+        <input
+          max={props.startingTime}
+          min={0} type='number'
+          onChange={props.changeTime}
+          defaultValue={secondsToMinutes(props.startingTime)}
+        >
+        </input>
         {warningInput}
       </span>
     </div>
