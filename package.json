@@ -1,8 +1,8 @@
 {
-  "name": "presentation-timer",
+  "name": "react-presentation-timer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://a-watkin.github.io/react-presentation-timer",
+  "homepage": "https://a-watkin.github.io/react-presentation-timer",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "react": "^16.9.0",
