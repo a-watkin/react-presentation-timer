@@ -2,6 +2,7 @@
   "name": "presentation-timer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://a-watkin.github.io/react-presentation-timer",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "react": "^16.9.0",
@@ -10,8 +11,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "deploy": "gh-pages-deploy",
-    "clean-source": "rimraf README.md src webroot package.json",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -31,7 +32,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "gh-pages-deploy": "^0.5.1"
-  }
+  "devDependencies": {}
 }
