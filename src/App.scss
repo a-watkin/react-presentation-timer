@@ -1,28 +1,33 @@
-.App {
+.container {
+  margin-top: 4rem;
+  max-width: 50vw;
+  min-height: 60vh;
+  border: solid black 5px;
+  padding: 1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.time-area {
+  margin-top: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.warning-area {
+  min-height: 8rem;
 }
 
 .time-input {
-  text-align: left;
-  border: solid red 2px;
-  color: red;
+  // border: solid red 2px;
+  // padding: 0.5rem;
+  margin: 2rem;
+  
+  input {
+    width: 6rem;
+    padding-left: 1rem;
+  }
 }
+
+.button-container {
+  padding: 0.5rem;
+  margin: 1rem;
+}
+

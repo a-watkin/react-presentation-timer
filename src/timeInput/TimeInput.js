@@ -12,22 +12,27 @@ const timeInput = (props) => {
 
   let text = props.text;
   if (!text) {
-    text = "Enter a warning time below:";
+    text = "Enter a warning time:";
   }
 
   return (
-    <div className="time-input">
-      <h3>{text}</h3>
-      <span>
-        <input
+    <div className="row">
+
+      <div className="col text-left">
+        <p>{text}</p>
+      </div>
+
+      <div className="col text-right my-auto">
+        <input className="text-center"
           max={props.startingTime}
           min={0} type='number'
           onChange={props.changeTime}
           defaultValue={secondsToMinutes(props.startingTime)}
         >
         </input>
-        {warningInput}
-      </span>
+      </div>
+      {warningInput}
+
     </div>
   )
 }

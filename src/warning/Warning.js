@@ -7,26 +7,28 @@ const warning = (props) => {
   let { time, firstWarning, secondWarning, startingTime } = props;
 
   let message = 'Plenty of time, you got this.'
-
-  if (time <= firstWarning) {
-    message = `Less than ${secondsToMinutesMessage(firstWarning)} minutes left, nearly there!`;
-  }
-
-  if (time <= secondWarning) {
-    message = `Less than ${secondsToMinutesMessage(secondWarning)} minutes left, nearly there!`;
-  }
-
-  if (time === 0) {
-    message = "Time's up!";
-  }
-
-  if (firstWarning > startingTime || secondWarning > startingTime) {
+  if (secondWarning >= startingTime) {
     message = `Some of your warnings are invalid!`;
+  } else if (firstWarning >= startingTime) {
+    message = `Some of your warnings are invalid!`;
+  } else {
+
+    if (time <= firstWarning) {
+      message = `Less than ${secondsToMinutesMessage(firstWarning)}, nearly there!`;
+    }
+
+    if (time <= secondWarning) {
+      message = `Less than ${secondsToMinutesMessage(secondWarning)}, almost done!`;
+    }
+
+    if (time === 0) {
+      message = "Time's up!";
+    }
   }
 
   return (
     <div>
-      <h2>{message}</h2>
+      <h3>{message}</h3>
     </div>
   )
 

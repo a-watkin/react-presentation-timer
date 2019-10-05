@@ -2,9 +2,9 @@ import React from 'react'
 
 const button = (props) => {
   return (
-    <span>
-      <button onClick={props.handleClick}>{props.name}</button>
-    </span>
+    <div>
+      <button className="btn btn-success btn-block" onClick={props.handleClick}>{props.name}</button>
+    </div>
   )
 }
 

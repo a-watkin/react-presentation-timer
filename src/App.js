@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 
 import Time from './time/Time';
 import TimeInput from './timeInput/TimeInput';
 import Warning from './warning/Warning';
 import Button from './buttons/Button'
+import { booleanTypeAnnotation } from '@babel/types';
 
 class App extends Component {
   constructor(props) {
@@ -114,50 +117,78 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>Presentation timer</h1>
+      <div className="App container">
+        {/* <h1>Presentation timer</h1> */}
 
-        <Time
-          time={this.state.remainingTime}
-        >
-        </Time>
+        <div className="row time-area">
+          <div className="col">
 
-        <Warning
-          startingTime={this.state.countdownTime}
-          time={this.state.remainingTime}
-          firstWarning={this.state.firstWarning}
-          secondWarning={this.state.secondWarning}
-        >
-        </Warning>
+            <Time
+              time={this.state.remainingTime}
+            >
+            </Time>
 
-        <TimeInput
-          startingTime={this.state.countdownTime}
-          text={"Enter presentation time in minutes below:"}
-          changeTime={(e) => this.handleTimeChange(e)}
-          showWarningInput={false}
-        ></TimeInput>
+          </div>
+        </div>
 
-        <TimeInput
-          startingTime={Math.floor(this.state.countdownTime / 2)}
-          changeTime={(e) => this.handleFirstWarnings(e)}
-          showWarningInput={false}
-        >
-        </TimeInput>
-        <TimeInput
-          startingTime={Math.floor(this.state.countdownTime / 4)}
-          changeTime={(e) => this.handleSecondWarnings(e)}
-          showWarningInput={false}
-        >
-        </TimeInput>
+        <div className="row warning-area">
+          <div className="col my-auto">
 
-        <span>
-          {this.state.timeFlowing ?
-            <Button handleClick={() => this.handlePause()} name={"Pause"}></Button> :
-            <Button handleClick={() => this.handleStart()} name={"Start"}></Button>}
+            <Warning
+              startingTime={this.state.countdownTime}
+              time={this.state.remainingTime}
+              firstWarning={this.state.firstWarning}
+              secondWarning={this.state.secondWarning}
+            >
+            </Warning>
 
-          <Button handleClick={() => this.hanldeResetTime()} name={"Reset"}></Button>
-        </span>
+          </div>
+        </div>
 
+        <div className="row time-input">
+          <div className="col">
+
+            <TimeInput
+              startingTime={this.state.countdownTime}
+              text={"Presentation time in minutes:"}
+              changeTime={(e) => this.handleTimeChange(e)}
+              showWarningInput={false}
+            ></TimeInput>
+
+            <TimeInput
+              startingTime={Math.floor(this.state.countdownTime / 2)}
+              text={"Warning time in minutes:"}
+              changeTime={(e) => this.handleFirstWarnings(e)}
+              showWarningInput={false}
+            >
+            </TimeInput>
+
+            <TimeInput
+              startingTime={Math.floor(this.state.countdownTime / 4)}
+              text={"Warning time in minutes:"}
+              changeTime={(e) => this.handleSecondWarnings(e)}
+              showWarningInput={false}
+            >
+            </TimeInput>
+
+          </div>
+        </div>
+
+        <div className="row button-container">
+          <div className="col">
+
+            {this.state.timeFlowing ?
+              <Button handleClick={() => this.handlePause()} name={"Pause"}></Button> :
+              <Button handleClick={() => this.handleStart()} name={"Start"}></Button>}
+          </div>
+
+          <div className="col">
+
+            <Button handleClick={() => this.hanldeResetTime()} name={"Reset"}></Button>
+
+          </div>
+
+        </div>
       </div>
     )
   }
