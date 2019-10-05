@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/react-presentation-timer/static/css/main.3bc266d8.chunk.css",
+    "main.js": "/react-presentation-timer/static/js/main.57f7c20f.chunk.js",
+    "main.js.map": "/react-presentation-timer/static/js/main.57f7c20f.chunk.js.map",
+    "runtime-main.js": "/react-presentation-timer/static/js/runtime-main.65916ee5.js",
+    "runtime-main.js.map": "/react-presentation-timer/static/js/runtime-main.65916ee5.js.map",
+    "static/css/2.0624914a.chunk.css": "/react-presentation-timer/static/css/2.0624914a.chunk.css",
+    "static/js/2.63e8d7e0.chunk.js": "/react-presentation-timer/static/js/2.63e8d7e0.chunk.js",
+    "static/js/2.63e8d7e0.chunk.js.map": "/react-presentation-timer/static/js/2.63e8d7e0.chunk.js.map",
+    "index.html": "/react-presentation-timer/index.html",
+    "precache-manifest.fc22790c44dc10dfe37b3100addb9246.js": "/react-presentation-timer/precache-manifest.fc22790c44dc10dfe37b3100addb9246.js",
+    "service-worker.js": "/react-presentation-timer/service-worker.js",
+    "static/css/2.0624914a.chunk.css.map": "/react-presentation-timer/static/css/2.0624914a.chunk.css.map",
+    "static/css/main.3bc266d8.chunk.css.map": "/react-presentation-timer/static/css/main.3bc266d8.chunk.css.map"
+  }
+}
