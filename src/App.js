@@ -35,7 +35,10 @@ class App extends Component {
   }
 
   tick() {
-    if (this.state.remainingTime > 0) {
+    if (this.state.(params) => {
+
+    }
+     > 0) {
       this.setState((state, props) => {
         return {
           remainingTime: state.remainingTime -= 1
