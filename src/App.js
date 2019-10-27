@@ -35,10 +35,7 @@ class App extends Component {
   }
 
   tick() {
-    if (this.state.(params) => {
-
-    }
-     > 0) {
+    if (this.state.countdownTime > 0) {
       this.setState((state, props) => {
         return {
           remainingTime: state.remainingTime -= 1
@@ -121,8 +118,6 @@ class App extends Component {
   render() {
     return (
       <div className="App container">
-        {/* <h1>Presentation timer</h1> */}
-
         <div className="row time-area">
           <div className="col">
 
