@@ -14,7 +14,6 @@ function secondsToMinutesMessage(time) {
   return `${minutes} minutes`;
 }
 
-
 function secondsToMinutes(time) {
   let seconds = parseInt(time, 10);
 
@@ -24,7 +23,6 @@ function secondsToMinutes(time) {
   let minutes = Math.floor(seconds / 60);
   seconds -= minutes * 60;
 
-  // console.log(minutes, seconds)
   return minutes;
 }
 
