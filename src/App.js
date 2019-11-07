@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 
+import UIfx from '../node_modules/uifx'
+import beepMp3 from './my-sounds/whisky_ding_short.wav'
 
 import Time from './time/Time';
 import TimeInput from './timeInput/TimeInput';
 import Warning from './warning/Warning';
 import Button from './buttons/Button'
-import { booleanTypeAnnotation } from '@babel/types';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
+
+const beep = new UIfx(beepMp3)
 
 class App extends Component {
   constructor(props) {
@@ -18,8 +23,8 @@ class App extends Component {
       // The time remaining in the current countdown.
       remainingTime: null,
       timeFlowing: false,
-      firstWarning: null,
-      secondWarning: null
+      firstWarning: 300,
+      secondWarning: 120
     }
   }
 
@@ -32,35 +37,33 @@ class App extends Component {
 
   stopCountdown() {
     clearInterval(this.timerID);
+    this.setState({
+      timeFlowing: !this.state.timeFlowing
+    })
   }
 
   tick() {
-    if (this.state.countdownTime > 0) {
+    if (this.state.remainingTime > 0) {
       this.setState((state, props) => {
         return {
           remainingTime: state.remainingTime -= 1
         }
       });
+
+      if (this.state.remainingTime === this.state.firstWarning) {
+        this.playSound();
+      }
+
+      if (this.state.remainingTime === this.state.secondWarning) {
+        this.playSound();
+      }
     } else {
       this.setState({
-        // reset to countdownTime
-        // remainingTime: this.state.countdownTime
+        timeFlowing: false
       })
     }
-  }
 
-  handlePause() {
-    if (this.state.timeFlowing) {
-      this.componentWillUnmount();
-      this.setState((state) => ({
-        timeFlowing: !state.timeFlowing
-      }));
-    } else {
-      this.componentDidMount();
-      this.setState((state) => ({
-        timeFlowing: !state.timeFlowing
-      }))
-    }
+    console.log(this.state)
   }
 
   componentDidMount() {
@@ -74,7 +77,15 @@ class App extends Component {
   }
 
   handleStart() {
-    if (!this.state.timeFlowing) {
+    let { timeFlowing, remainingTime } = this.state;
+    if (!timeFlowing) {
+      // If a previous countdown has ended reset remaining time.
+      if (remainingTime === 0) {
+        this.setState({
+          remainingTime: this.state.countdownTime
+        })
+      }
+
       this.setState({
         timeFlowing: true
       })
@@ -82,7 +93,7 @@ class App extends Component {
     this.startCountdown();
   }
 
-  hanldeResetTime() {
+  handleResetTime() {
     this.componentWillUnmount();
     this.setState((state) => ({
       timeFlowing: false,
@@ -93,7 +104,7 @@ class App extends Component {
 
   handleTimeChange(e) {
     this.stopCountdown();
-    // convert the input to what it would be in seconds for the minute value entered
+    // Convert the input to what it would be in seconds for the minute value entered.
     let inputTime = e.target.value * 60;
 
     this.setState({
@@ -113,6 +124,10 @@ class App extends Component {
     this.setState({
       secondWarning: e.target.value * 60
     });
+  }
+
+  playSound() {
+    beep.play();
   }
 
   render() {
@@ -137,6 +152,8 @@ class App extends Component {
               time={this.state.remainingTime}
               firstWarning={this.state.firstWarning}
               secondWarning={this.state.secondWarning}
+              // This might not work.
+              timeFlowing={this.state.timeFlowing}
             >
             </Warning>
 
@@ -176,13 +193,14 @@ class App extends Component {
           <div className="col">
 
             {this.state.timeFlowing ?
-              <Button handleClick={() => this.handlePause()} name={"Pause"}></Button> :
-              <Button handleClick={() => this.handleStart()} name={"Start"}></Button>}
+              <Button handleClick={() => this.stopCountdown()} name={"Pause"}></Button> :
+              <Button handleClick={() => this.handleStart()} name={"Start"}></Button>
+            }
           </div>
 
           <div className="col">
 
-            <Button handleClick={() => this.hanldeResetTime()} name={"Reset"}></Button>
+            <Button handleClick={() => this.handleResetTime()} name={"Reset"}></Button>
 
           </div>
 
